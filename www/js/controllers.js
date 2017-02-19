@@ -3,8 +3,10 @@ angular.module('starter.controllers', [])
 	.controller('DashCtrl', function ($scope, $http) {
 		$http.get("js/config.json")
 			.then(
-				function (success) {
-
+				function (response) {
+					$scope.description = response.data.meetingDescription;
+					$scope.location = response.data.meetingLocation;
+					$scope.presenters = response.data.meetingPresenters;
 				}, function (error) {
 					console.error('Getting configuration file error - ' + JSON.stringify(error, null, 2));
 				}
