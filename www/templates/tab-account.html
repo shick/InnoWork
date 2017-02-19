@@ -1,0 +1,22 @@
+<ion-view view-title="Schedule">
+	<ion-content>
+		<div class="list">
+			<div ng-repeat="days in schedule">
+				<div class="item item-divider">
+					{{ days.date }}
+				</div>
+				<div ng-repeat="event in days.schedule.day">
+					<div class="item item-divider">
+						{{ event.daytime }}
+					</div>
+					<a class="item">
+						{{ event.title }}
+					</a>
+				</div>
+				<p><br><br></p>
+			</div>
+		</div>
+	
+	</ion-content>
+</ion-view>
+

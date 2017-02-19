@@ -1,0 +1,38 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+>
+<!--</ion-view>-->
+<ion-view view-title="{{chat.name}}">
+	<ion-content class="padding">
+		<div class="list card">
+			<div class="item item-avatar">
+				<img src="../{{chat.face}}">
+				<h2>{{ chat.name }}</h2>
+				<p>{{ chat.lastText }}</p>
+			</div>
+			<div class="item item-body">
+				<img class="full-image" src="../{{ chat.face }}">
+				<p>
+					This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+					the content is from a card-body consisting of an image and paragraph text. The footer
+					consists of tabs, icons aligned left, within the card-footer.
+				</p>
+				<p>
+					<a href="#" class="subdued"># Scopus h-index</a>
+				</p>
+			</div>
+		
+		</div>
+	</ion-content>
+</ion-view>
+<!--<ion-view view-title="{{chat.name}}">-->
+<!--<ion-content class="padding">-->
+<!--<img ng-src="{{chat.face}}" style="width: 64px; height: 64px">-->
+<!--<p>-->
+<!--{{chat.lastText}}-->
+<!--</p>-->
+<!--</ion-content>--
