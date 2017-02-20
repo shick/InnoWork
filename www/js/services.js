@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
 
-	.factory('Chats', function ($http) {
+	.factory('Partecipants', function ($http) {
 		// Might use a resource here that returns a JSON array
 		// $http({
 		// 	method: 'GET',
@@ -18,7 +18,7 @@ angular.module('starter.services', [])
 		// );
 
 		// Some fake testing data
-		var chats = [{
+		var partecipants = [{
 			id: 0,
 			name: 'Ben Sparrow',
 			lastText: 'You on your way?',
@@ -47,15 +47,15 @@ angular.module('starter.services', [])
 
 		return {
 			all: function () {
-				return chats;
+				return partecipants;
 			},
-			remove: function (chat) {
-				chats.splice(chats.indexOf(chat), 1);
+			remove: function (user) {
+				partecipants.splice(partecipants.indexOf(user), 1);
 			},
-			get: function (chatId) {
-				for (var i = 0; i < chats.length; i++) {
-					if (chats[i].id === parseInt(chatId)) {
-						return chats[i];
+			get: function (userId) {
+				for (var i = 0; i < partecipants.length; i++) {
+					if (partecipants[i].id === parseInt(userId)) {
+						return partecipants[i];
 					}
 				}
 				return null;

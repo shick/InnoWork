@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-	.controller('DashCtrl', function ($scope, $http) {
+	.controller('HomeCtrl', function ($scope, $http) {
 		$http.get("js/config.json")
 			.then(
 				function (response) {
@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
 		;
 	})
 
-	.controller('ChatsCtrl', function ($scope, Chats) {
+	.controller('PartecipantsCtrl', function ($scope, Partecipants) {
 		// With the new view caching in Ionic, Controllers are only called
 		// when they are recreated or on app start, instead of every page change.
 		// To listen for when this page is active (for example, to refresh data),
@@ -23,14 +23,14 @@ angular.module('starter.controllers', [])
 		//$scope.$on('$ionicView.enter', function(e) {
 		//});
 
-		$scope.chats = Chats.all();
-		$scope.remove = function (chat) {
-			Chats.remove(chat);
+		$scope.partecipants = Partecipants.all();
+		$scope.remove = function (partecipant) {
+			Partecipants.remove(partecipant);
 		};
 	})
 
-	.controller('ChatDetailCtrl', function ($scope, $stateParams, Chats) {
-		$scope.chat = Chats.get($stateParams.chatId);
+	.controller('PartecipantDetailCtrl', function ($scope, $stateParams, Partecipants) {
+		$scope.partecipant = Partecipants.get($stateParams.userId);
 	})
 
 	.controller('ScheduleCtrl', function ($scope, Schedule) {

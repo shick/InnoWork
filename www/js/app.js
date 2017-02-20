@@ -40,46 +40,46 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+  .state('tab.home', {
+    url: '/home',
+      views: {
+      'tab-home': {
+        templateUrl: 'templates/tab-home.html',
+        controller: 'HomeCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.partecipants', {
+      url: '/partecipants',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-partecipants': {
+          templateUrl: 'templates/tab-partecipants.html',
+          controller: 'PartecipantsCtrl'
         }
       }
     })
     .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+      url: '/partecipants/:userId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-partecipants': {
+          templateUrl: 'templates/partecipant-detail.html',
+          controller: 'PartecipantDetailCtrl'
         }
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.schedule', {
+    url: '/schedule',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
+      'tab-schedule': {
+        templateUrl: 'templates/tab-schedule.html',
         controller: 'ScheduleCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/home');
 
 });
