@@ -1,12 +1,17 @@
 <ion-view view-title="Partecipants">
-	<ion-content>
+	<ion-nav-buttons side="primary">
+      <button class="button button-positive" ng-click="openPopover($event)">
+        Sort
+      </button>
+    </ion-nav-buttons>
+	<ion-content class="customBgColor">
 		<ion-list>
 			<ion-item class="item-remove-animate item-avatar item-icon-right"
-			          ng-repeat="partecipant in partecipants" type="item-text-wrap"
+			          ng-repeat="partecipant in partecipants | orderBy:choice" type="item-text-wrap"
 			          href="#/tab/partecipants/{{partecipant.id}}">
-				<img ng-src="{{partecipant.face}}">
-				<h2>{{partecipant.name}}</h2>
-				<p>{{partecipant.lastText}}</p>
+				<img ng-src="{{partecipant.foto}}">
+				<h2>{{partecipant.nome}} {{partecipant.cognome}}</h2>
+				<span ng-repeat="interest in partecipant.areaInteresse">{{interest.area}} &nbsp; </span>
 				<i class="icon ion-chevron-right icon-accessory"></i>
 				
 				<ion-option-button class="button-assertive" ng-click="remove(partecipant)">
@@ -15,4 +20,16 @@
 			</ion-item>
 		</ion-list>
 	</ion-content>
+	<script id="my-popover.html" type="text/ng-template">
+	<ion-popover-view style="width: 80%">
+		<ion-header-bar>
+		<h1 class="title">Ordina</h1>
+		</ion-header-bar>
+		<ion-content>
+			<ion-radio ng-model="choice" ng-value="'cognome'" ng-click="sort(choice)">Cognome</ion-radio>
+			<ion-radio ng-model="choice" ng-value="'hIndex'" ng-click="sort(choice)" >H-index</ion-radio>
+			selected {{choice}}
+		</ion-content>
+	</ion-popover-view>
+	</script>
 </ion-view>

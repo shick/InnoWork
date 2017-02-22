@@ -1,6 +1,7 @@
 {
   "app-name": "InnoWork",
-  "server-ip": "<server-domain-name>",
+  "server": "<server-domain-name>",
+  "logo": "logo.png",
   "meetingDescription": "Quali sono le tendenze che guideranno il Cloud Computing per i prossimi cinque anni e come cambierà il modo di operare delle aziende che, legate all’Information Technology, adotteranno il cloud per migliorare i servizi forniti ai propri clienti? L’utilizzo del cloud per innovarsi, per trovare soluzioni più efficaci ed efficienti e per migliorare la qualità dei servizi offerti saranno i punti di discussione dell’innovation workshop.Presenzieranno all’evento professionisti ed esperti del settore per descrivere l’utilità dei servizi cloud da due punti di vista.Il primo riguarda l’adozione di tali servizi all’interno dell’azienda allo scopo di ottimizzare la modalità di lavoro, con la conseguente riduzione dei costi di gestione.Il secondo comporta un cambiamento del rapporto con i clienti nei confronti dei quali è necessaria una specifica campagna informativa che faccia comprendere loro una nuova filosofia di gestione e mantenimento dei propri dati e servizi.",
   "meetingLocation": "Università degli Studi di Salerno - Fisciano (SA) - Italy",
   "meetingPresenters": "Filippo Troisi - Concetta Di Muro"

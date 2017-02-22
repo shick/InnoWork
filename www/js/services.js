@@ -1,49 +1,110 @@
 angular.module('starter.services', [])
 
-	.factory('Partecipants', function ($http) {
-		// Might use a resource here that returns a JSON array
-		// $http({
-		// 	method: 'GET',
-		// 	url: "",
-		// 	headers: {
-		// 		'Content-Type': 'application/json; charset=utf-8'
-		// 	},
-		// 	timeout: 100000
-		// }).then(
-		// 	function (success) {
-		//
-		// 	}, function (error) {
-		//
-		// 	}
-		// );
+    .factory('OrderedPartecipants', function($http) {
+        var partecipants = [];
+		var serverName = "";
+		$http.get("/js/config.json").then(
+			function (response) {
+				serverName = response.data.server;
+			}, function (error) {
+				console.log("Get config.json error - " + JSON.stringify(error));
+			}
+		);
 
-		// Some fake testing data
-		var partecipants = [{
-			id: 0,
-			name: 'Ben Sparrow',
-			lastText: 'You on your way?',
-			face: 'img/ben.png'
-		}, {
-			id: 1,
-			name: 'Max Lynx',
-			lastText: 'Hey, it\'s me',
-			face: 'img/max.png'
-		}, {
-			id: 2,
-			name: 'Adam Bradleyson',
-			lastText: 'I should buy a boat',
-			face: 'img/adam.jpg'
-		}, {
-			id: 3,
-			name: 'Perry Governor',
-			lastText: 'Look at my mukluks!',
-			face: 'img/perry.png'
-		}, {
-			id: 4,
-			name: 'Mike Harrington',
-			lastText: 'This is wicked good ice cream.',
-			face: 'img/mike.png'
-		}];
+        partecipants = [{"foto":"http://docenti.unisa.it/uploads/rescue/foto/005768.jpg","cognome":"Foggia","areaInteresse":[{"area":"Computer Vision"}],"nome":"Pasquale","hIndex":"110"},{"foto":"http://docenti.unisa.it/uploads/rescue/foto/024950.jpg","cognome":"Saggese","areaInteresse":[{"area":"Computer Vision"}],"nome":"Alessia","hIndex":"44"},{"foto":"http://docenti.unisa.it/uploads/rescue/foto/005501.jpg","cognome":"Vento","areaInteresse":[{"area":"Mobile Programming"},{"area":"Computer Vision"},{"area":"Embedded System"}],"nome":"Mario","hIndex":"203"}];
+
+        return {
+			all: function () {
+				return partecipants;
+			},
+			remove: function (user) {
+				partecipants.splice(partecipants.indexOf(user), 1);
+			},
+			get: function (userId) {
+				for (var i = 0; i < partecipants.length; i++) {
+					if (partecipants[i].id === parseInt(userId)) {
+						return partecipants[i];
+					}
+				}
+				return null;
+			}
+		};
+
+    })
+
+	.factory('Partecipants', function ($http) {
+
+		var partecipants = [];
+		var serverName = "";
+		$http.get("/js/config.json").then(
+			function (response) {
+				serverName = response.data.server;
+			}, function (error) {
+				console.log("Get config.json error - " + JSON.stringify(error));
+			}
+		);
+
+		// Might use a resource here that returns a JSON array
+		 /*$http({
+		 	method: 'GET',
+		 	url: $scope.serverName + "/convegnoServer/partecipants/all",
+		 	headers: {
+		 		'Content-Type': 'application/json; charset=utf-8',
+				 'Access-Control-Allow-Origin' :'*'
+		 	},
+		 	timeout: 100000
+		 }).then(
+		 	function (response) {
+				partecipants = response.data; 
+		 	}, function (error) {
+				console.log("get part error - " + JSON.stringify(error, null, 2));
+		 	}
+		 );*/
+
+		 partecipants = [  
+      {  
+		 "id": 1,
+         "foto":"http://docenti.unisa.it/uploads/rescue/foto/005501.jpg",
+         "cognome":"Vento",
+         "areaInteresse":[  
+            {  
+               "area":"Mobile Programming"
+            },
+            {  
+               "area":"Computer Vision"
+            },
+            {  
+               "area":"Embedded System"
+            }
+         ],
+         "nome":"Mario",
+         "hIndex":"203"
+      },
+      {  
+		"id": 2,
+         "foto":"http://docenti.unisa.it/uploads/rescue/foto/024950.jpg",
+         "cognome":"Saggese",
+         "areaInteresse":[  
+            {  
+               "area":"Computer Vision"
+            }
+         ],
+         "nome":"Alessia",
+         "hIndex":"44"
+      },
+      {  
+		 "id": 3,
+         "foto":"http://docenti.unisa.it/uploads/rescue/foto/005768.jpg",
+         "cognome":"Foggia",
+         "areaInteresse":[  
+            {  
+               "area":"Computer Vision"
+            }
+         ],
+         "nome":"Pasquale",
+         "hIndex":"110"
+      }
+   ];
 
 		return {
 			all: function () {
@@ -64,85 +125,141 @@ angular.module('starter.services', [])
 	})
 
 	.factory('Schedule', function ($http) {
+
+		var schedule = [];
+		var serverName = "";
+		$http.get("/js/config.json").then(
+			function (response) {
+				serverName = response.data.server;
+			}, function (error) {
+				console.log("Get config.json error - " + JSON.stringify(error));
+			}
+		);
+
 		// Might use a resource here that returns a JSON array
-		// $http({
-		// 	method: 'GET',
-		// 	url: "",
-		// 	headers: {
-		// 		'Content-Type': 'application/json; charset=utf-8'
-		// 	},
-		// 	timeout: 100000
-		// }).then(
-		// 	function (success) {
-		//
-		// 	}, function (error) {
-		//
-		// 	}
-		// );
+		 /*$http({
+		 	method: 'GET',
+		 	url: $scope.serverName + "/convegnoServer/schedule/all",
+		 	headers: {
+		 		'Content-Type': 'application/json; charset=utf-8'
+		 	},
+		 	timeout: 100000
+		 }).then(
+		 	function (success) {
+		
+		 	}, function (error) {
+		
+		 	}
+		 );*/
 
 		// Some fake testing data
 
-		var schedule = [
-			{
-				date: "Day 1",
-				schedule: {
-					day: [{
-						id: 3,
-						daytime: "9:00",
-						title: 'Perry Governor',
-						subtitle: 'Look at my mukluks!'
-					}, {
-						id: 4,
-						daytime: "12:00",
-						title: 'Mike Harrington',
-						subtitle: 'This is wicked good ice cream.'
-					}]
-				}
-			},
-			{
-				date: "Day 2",
-				schedule: {
-					day: [{
-						id: 0,
-						daytime: "10:00",
-						title: 'Ben Sparrow',
-						subtitle: 'You on your way?'
-					}, {
-						id: 1,
-						daytime: "17:00",
-						title: 'Max Lynx',
-						subtitle: 'Hey, it\'s me'
-					}]
-				}
-			},
-			{
-				date: "Day 3",
-				schedule: {
-					day: [{
-						id: 2,
-						daytime: "12:00",
-						title: 'Adam Bradleyson',
-						subtitle: 'I should buy a boat'
-					}]
-				}
-			},
-			{
-				date: "Day 4",
-				schedule: {
-					day: [{
-						id: 3,
-						daytime: "8:00",
-						title: 'Perry Governor',
-						subtitle: 'Look at my mukluks!'
-					}, {
-						id: 4,
-						daytime: "20:00",
-						title: 'Mike Harrington',
-						subtitle: 'This is wicked good ice cream.'
-					}]
-				}
-			}
-		];
+		schedule = [  
+   {  
+      "descrizione":"descrizione 1",
+      "titolo":"titolo 1",
+      "data":"2017-02-22",
+      "sala":"1",
+      "oraInizio":"15:00:00",
+      "relatori":[  
+         {  
+            "cognome":"Vento",
+            "nome":"Mario",
+            "hIndex":"203"
+         },
+         {  
+            "cognome":"Saggese",
+            "nome":"Alessia",
+            "hIndex":"44"
+         }
+      ]
+   },
+   {  
+      "descrizione":"descrizione 2",
+      "titolo":"titolo 2",
+      "data":"2017-02-22",
+      "sala":"2",
+      "oraInizio":"15:30:00",
+      "relatori":[  
+         {  
+            "cognome":"Vento",
+            "nome":"Mario",
+            "hIndex":"203"
+         }
+      ]
+   },
+   {  
+      "descrizione":"descrizione 3",
+      "titolo":"titolo 3",
+      "data":"2017-02-22",
+      "sala":"2",
+      "oraInizio":"20:02:00",
+      "relatori":[  
+         {  
+            "cognome":"Vento",
+            "nome":"Mario",
+            "hIndex":"203"
+         },
+         {  
+            "cognome":"Saggese",
+            "nome":"Alessia",
+            "hIndex":"44"
+         },
+         {  
+            "cognome":"Foggia",
+            "nome":"Pasquale",
+            "hIndex":"110"
+         }
+      ]
+   },
+   {  
+      "descrizione":"descrizione 4",
+      "titolo":"titolo 4",
+      "data":"2017-02-22",
+      "sala":"3",
+      "oraInizio":"20:01:00",
+      "relatori":[  
+         {  
+            "cognome":"Vento",
+            "nome":"Mario",
+            "hIndex":"203"
+         }
+      ]
+   },
+   {  
+      "descrizione":"descrizione 5",
+      "titolo":"titolo 5",
+      "data":"2017-02-22",
+      "sala":"3",
+      "oraInizio":"20:04:00",
+      "relatori":[  
+         {  
+            "cognome":"Vento",
+            "nome":"Mario",
+            "hIndex":"203"
+         }
+      ]
+   },
+   {  
+      "descrizione":"descrizione 6",
+      "titolo":"titolo 6",
+      "data":"2017-02-22",
+      "sala":"1",
+      "oraInizio":"19:50:00",
+      "relatori":[  
+         {  
+            "cognome":"Saggese",
+            "nome":"Alessia",
+            "hIndex":"44"
+         },
+         {  
+            "cognome":"Foggia",
+            "nome":"Pasquale",
+            "hIndex":"110"
+         }
+      ]
+   }
+];
 
 		return {
 			all: function () {

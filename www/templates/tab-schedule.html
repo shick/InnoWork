@@ -1,19 +1,16 @@
 <ion-view view-title="Schedule">
-	<ion-content>
+	<ion-content class="customBgColor">
 		<div class="list">
-			<div ng-repeat="days in schedule">
+			<div ng-repeat="event in schedule">
 				<div class="item item-divider balanced">
-					{{ days.date }}
+					{{ event.data }} - {{event.oraInizio}}
 				</div>
-				<div ng-repeat="event in days.schedule.day">
-					<div class="item item-divider royal">
-						{{ event.daytime }}
-					</div>
-					<a class="item">
-						{{ event.title }}
-					</a>
-				</div>
-				<p><br><br></p>
+				<div></div>
+				<a class="item">
+					<span style="font-weight: bold; font-size: high">
+						{{ event.titolo }}</span> <br><br> <b>Relatori</b> <br>
+					<span ng-repeat="relatori in event.relatori">{{relatori.nome}} {{relatori.cognome}} <br></span>
+				</a>
 			</div>
 		</div>
 	

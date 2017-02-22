@@ -1,5 +1,11 @@
 /* Empty. Add your own CSS if you like */
-
+:root {
+  --main-bg-color: #FFFFFF;
+}
 .text-justify {
     text-align: justify;
+}
+
+.customBgColor {
+    background-color: var(--main-bg-color);
 }
