@@ -45,7 +45,7 @@ angular.module('starter.services', [])
 		);
 
 		// Might use a resource here that returns a JSON array
-		 /*$http({
+	/*	 $http({
 		 	method: 'GET',
 		 	url: $scope.serverName + "/convegnoServer/partecipants/all",
 		 	headers: {
@@ -59,9 +59,9 @@ angular.module('starter.services', [])
 		 	}, function (error) {
 				console.log("get part error - " + JSON.stringify(error, null, 2));
 		 	}
-		 );*/
+         );*/
 
-		 partecipants = [  
+	 partecipants = [  
       {  
 		 "id": 1,
          "foto":"http://docenti.unisa.it/uploads/rescue/foto/005501.jpg",
@@ -104,7 +104,7 @@ angular.module('starter.services', [])
          "nome":"Pasquale",
          "hIndex":"110"
       }
-   ];
+         ]; 
 
 		return {
 			all: function () {
